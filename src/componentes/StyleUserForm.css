@@ -10,6 +10,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition:.5s ease all;
+    z-index: 10;
 }
 .container-form .container-but-new-user{
     width: 300px;
@@ -34,6 +36,10 @@
 .container-but-new-user button{
     border: none;
     background-color: transparent;
+
+/**/
+    background: #f2f2f2;
+
 }
 .container-item{
     margin-bottom: 10px;

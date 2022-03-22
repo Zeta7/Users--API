@@ -3,26 +3,23 @@ import UsersList from './componentes/UsersList';
 import UsersForm from './componentes/UsersForm';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import {Modal} from '@material-ui/core';
 import swal from 'sweetalert';
+
 
 function App() {
   const [users, setUsers] = useState([]);
   const [view, setView] = useState(false);
-  const [useredit, setUserEdit] = useState(null);
-  const [viewEdit, setViewEdit] = useState(false);
-
-  // vista de form
-  const viewForm = () =>{
-    setView(!view)
-  }
-  const viewFormEdit = () =>{
-    setViewEdit(!viewEdit)
-  }
+  const [useredit, setUserEdit] = useState({});
+  const [edit, setEdit] = useState(false);
 
   useEffect(()=>{
     getUsers(); 
   },[]);
+
+  const setviwForm = () =>{
+    setEdit(false);
+    setView(!view)
+  }
 
   //traer la lista de usuarios
 const getUsers = () =>{
@@ -38,6 +35,7 @@ const addUser = user =>{
   .then(()=>getUsers());
   setView(false)
   swal({title:"Usuario Agregado", text:"Se agrego correctamente", icon:"success"});
+  setEdit(false);
 }
 
 //eliminar un usuario
@@ -57,32 +55,46 @@ const deleteUser = id =>{
 }
 //seleccionar usuario
 const selectUser = (userInfo, id) => {
-  viewFormEdit();
   setUserEdit(userInfo);
 };
 //actualizar usuario
 const updateUser = (userInfo, id) =>{
   axios.patch(`https://users-crud1.herokuapp.com/users/${id}/`, userInfo)
   .then(()=>getUsers());
-  setViewEdit(false);
   swal({title:"Usuario Actualizado", text:"Se actualizo correctamente", icon:"success"});
+  setView(!view);
+  setEdit(false);
 }
-
   return (
     <div className="App">
-      <Modal open={view} onClose={viewForm}>
-        <UsersForm viewForm={viewForm} addUser={addUser} useredit='' btn_agregar='Agregar Nuevo Usuario' txtinicio='Agregar Usuario' updateUser={updateUser} />
-      </Modal>
-      <Modal open={viewEdit} onClose={viewFormEdit}>
-        <UsersForm viewForm={viewFormEdit} useredit={useredit} btn_agregar='Guardar cambios' txtinicio='Editar Usuario' updateUser={updateUser} />
-      </Modal>
+      <UsersForm 
+        open={view} 
+        onClose={setView}
+        addUser={addUser} 
+        useredit={useredit} 
+        updateUser={updateUser} 
+        edit={edit} 
+        setEdit={setEdit}
+      />
+
       <div className='container-button'>
-        <button onClick={viewForm}>
+        <button onClick={setviwForm}>
           <i className="fa-solid fa-user-plus"/>Nuevo usuario
         </button>
       </div>
+      
       <h1>Usuarios</h1>
-      <UsersList users = {users} deleteUser={deleteUser} selectUser={selectUser}/>
+      <UsersList 
+        users = {users} 
+        deleteUser={deleteUser} 
+        selectUser={selectUser}
+        open={view} 
+        onClose={setView}
+        useredit={useredit}
+        setUserEdit={setUserEdit}
+        edit={edit} 
+        setEdit={setEdit}
+      />    
     </div>
   );
 

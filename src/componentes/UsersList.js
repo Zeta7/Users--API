@@ -1,8 +1,13 @@
 import React from "react";
 import './StyleUserList.css';
 
-const UsersList = ({users, deleteUser, selectUser}) => {
+const UsersList = ({users, deleteUser, selectUser, open, onClose, setEdit}) => {
 
+    const selectUserL = (us, id) =>{
+        onClose(!open);
+        selectUser(us, id);
+        setEdit(true);
+    }
 
     return (
         <div className="container-card">
@@ -23,7 +28,7 @@ const UsersList = ({users, deleteUser, selectUser}) => {
                             </div>
                             <div className="line"></div>
                             <div className="b">
-                                <button onClick={()=>selectUser(us,us.id)} className="update"><i className="fa-solid fa-pencil"/></button>
+                                <button onClick={()=>selectUserL(us,us.id)} className="update"><i className="fa-solid fa-pencil"/></button>
                                 <button onClick={()=>deleteUser(us.id)} className="delete"><i className="fa-solid fa-trash"/></button>
                             </div>
                         </div>
