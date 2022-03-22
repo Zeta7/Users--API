@@ -134,6 +134,9 @@ const ContenedorForm = styled.div`
         border-bottom: 1px solid #969595;
         outline:none;
     }
+    label{
+        margin-top: 10px;
+    }
 `;
 const BotonCerrar = styled.button`
     position: absolute;
