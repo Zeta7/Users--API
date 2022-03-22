@@ -130,13 +130,12 @@ const ContenedorForm = styled.div`
         height: 25px;
         border-left: 0px ;
         border-top: 0px ;
+        margin-bottom: 10px;
         border-right: 0px ;
         border-bottom: 1px solid #969595;
         outline:none;
     }
-    label{
-        margin-top: 10px;
-    }
+    
 `;
 const BotonCerrar = styled.button`
     position: absolute;
