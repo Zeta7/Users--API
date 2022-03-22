@@ -1,0 +1,125 @@
+
+
+.container-card{
+    width: 100%;
+    padding-left: 30px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.card{
+    margin: 15px 20px;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: #fff;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+    border-radius: 10px;
+}
+.card:hover{box-shadow: 0px 0px 10px #00000090;
+}
+.card .i{
+
+    position: absolute;
+    top: 15px;
+    left: -15px;
+    width: 220px;
+    height: 40px;
+    background: #3fb3d6;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    color: #fff;
+}
+.card .i::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    width: 15px;
+    height: 25px;
+    left: 0px;
+    background: #0c566d;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 2;
+}
+.card .i::after{
+    content: '';
+    position: absolute;
+    top: 40px;
+    width: 15px;
+    height: 10px;
+    left: 0px;
+    background: #3fb3d6;
+    z-index: 1;
+}
+
+.card .i h2{
+    font-size: 18px;
+}
+
+.card .c{
+    width: 210px;
+}
+
+/*contenido card*/
+
+.card .c span{
+    color: #a7a4a4;
+    font-size: 15px;
+
+}
+.card .c p{
+    color: #000000;
+    font-size: 15px;
+    margin-top: -3px;
+    margin-bottom: 5px;
+}
+
+.card .line{
+    width: 85%;
+    height: 0px;
+    border: 1px solid rgb(218, 216, 216);
+    margin-bottom: 5px;
+}
+
+.card .b{
+    width: 85%;
+    text-align: end;
+}
+.card .b button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 10px;
+    color: #fff;
+}
+.card .b  .delete{
+    background-color: #f71000;
+}
+.card .b .delete:hover{
+    background-color: #b80a0a;
+    cursor: pointer;
+    transform: scale(0.9);
+}
+.card .b  .update{
+    background-color: #f7a100;
+}
+.card .b .update:hover{
+    background-color: #b18005;
+    cursor: pointer;
+    transform: scale(0.9);
+}
+.subcont-card{
+    width: 100%;
+    padding-top: 60px;
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
